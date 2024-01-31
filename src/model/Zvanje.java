@@ -10,6 +10,6 @@ package model;
  */
 public enum Zvanje {
     DOCENT,
-    VANREDVNI_PROFESOR,
+    VANREDNI_PROFESOR,
     REDOVNI_PROFESOR;
 }
