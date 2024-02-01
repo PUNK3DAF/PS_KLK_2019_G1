@@ -8,6 +8,7 @@ import base.DBBroker;
 import java.util.ArrayList;
 import java.util.List;
 import model.PoreskaStopa;
+import model.Predaje;
 import model.Profesor;
 import model.Proizvod;
 import model.Proizvodjac;
@@ -74,6 +75,10 @@ public class Controller {
 
     public void izmeniProfesora(Profesor p) {
         dbb.izmeniProfesora(p);
+    }
+
+    public List<Predaje> ucitajListuAngaz(List<Profesor> selekProf) {
+        return dbb.ucitajListuAngaz(selekProf);
     }
 
 }
