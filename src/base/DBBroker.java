@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Profesor;
 import model.Status;
 import model.Zvanje;
@@ -23,20 +24,12 @@ import model.Zvanje;
 public class DBBroker {
 
     private Konekcija konek = Konekcija.getInstance();
-    private List<Profesor> profesori;
-    private static int i = 1;
-
-    public List<Profesor> getProfesori() {
-        return profesori;
-    }
 
     public DBBroker() {
-        profesori = new ArrayList<>();
     }
 
     public List<Profesor> ucitajListu() {
-        System.out.println(i + "");
-        i++;
+        List<Profesor> profesori = new ArrayList<>();
         try {
             String upit = "SELECT * FROM profesori";
             Statement st = konek.getKonek().createStatement();
@@ -68,8 +61,10 @@ public class DBBroker {
             ps.setInt(4, p.getId());
             ps.executeUpdate();
             konek.getKonek().commit();
+
         } catch (SQLException ex) {
-            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBBroker.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -8,6 +8,7 @@ import base.DBBroker;
 import controller.Controller;
 import javax.swing.JOptionPane;
 import model.Profesor;
+import model.Status;
 
 /**
  *
@@ -38,6 +39,7 @@ public class Zadatak2Forma extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProfesori = new javax.swing.JTable();
         jButtonIzmeni = new javax.swing.JButton();
+        jButtonOdustani = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +63,13 @@ public class Zadatak2Forma extends javax.swing.JFrame {
             }
         });
 
+        jButtonOdustani.setText("ODUSTANI");
+        jButtonOdustani.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOdustaniActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,7 +78,9 @@ public class Zadatak2Forma extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonIzmeni, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(jButtonOdustani, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,6 +91,8 @@ public class Zadatak2Forma extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addComponent(jButtonIzmeni)
+                .addGap(28, 28, 28)
+                .addComponent(jButtonOdustani)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -90,6 +103,8 @@ public class Zadatak2Forma extends javax.swing.JFrame {
         int selekRed = jTableProfesori.getSelectedRow();
         if (selekRed == -1) {
             JOptionPane.showMessageDialog(this, "SELEKTUJ RED ZA IZMENU", "NIJE SELEKTOVAN RED", JOptionPane.ERROR_MESSAGE);
+        } else if (kontroler.ucitajListu().get(selekRed).getStatus() == Status.PENZIONISAN) {
+            JOptionPane.showMessageDialog(this, "MORAS AKTIVNOG", "PENZOS", JOptionPane.ERROR_MESSAGE);
         } else {
             Profesor p = kontroler.ucitajListu().get(selekRed);
             ProfesoriForma pf = new ProfesoriForma(this, true, p);
@@ -100,11 +115,16 @@ public class Zadatak2Forma extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jButtonIzmeniActionPerformed
 
+    private void jButtonOdustaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOdustaniActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButtonOdustaniActionPerformed
+
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIzmeni;
+    private javax.swing.JButton jButtonOdustani;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableProfesori;
     // End of variables declaration//GEN-END:variables

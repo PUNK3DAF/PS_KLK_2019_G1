@@ -17,6 +17,14 @@ public class ModelTabeleProfesor extends AbstractTableModel {
     private List<Profesor> profesori;
     private String[] kolone = {"id", "ime", "prezime", "zvanje", "status"};
 
+    public List<Profesor> getProfesori() {
+        return profesori;
+    }
+
+    public void setProfesori(List<Profesor> profesori) {
+        this.profesori = profesori;
+    }
+
     public ModelTabeleProfesor(List<Profesor> profesori) {
         this.profesori = profesori;
     }

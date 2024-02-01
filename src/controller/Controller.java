@@ -11,7 +11,6 @@ import model.PoreskaStopa;
 import model.Profesor;
 import model.Proizvod;
 import model.Proizvodjac;
-import model.Zvanje;
 
 /**
  *

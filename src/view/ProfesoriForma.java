@@ -6,6 +6,7 @@ package view;
 
 import controller.Controller;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.Profesor;
 import model.Status;
 import model.Zvanje;
@@ -164,6 +165,7 @@ public class ProfesoriForma extends javax.swing.JDialog {
         p.setZvanje(zvanje);
         kontroler.izmeniProfesora(p);
         z2f.popuniTabelu();
+        JOptionPane.showMessageDialog(this, "USPESNO IZMENJENO", "IZMENA", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonSacuvajActionPerformed
 
     /**
