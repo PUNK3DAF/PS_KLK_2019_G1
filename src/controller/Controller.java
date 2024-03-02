@@ -4,9 +4,13 @@
  */
 package controller;
 
+import base.DBBroker;
+import base.Konekcija;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import model.PoreskaStopa;
+import model.Profesor;
 import model.Proizvod;
 import model.Proizvodjac;
 
@@ -17,6 +21,7 @@ import model.Proizvodjac;
 public class Controller {
 
     private static Controller instance;
+    private DBBroker dbb = DBBroker.getInstance();
     private final List<Proizvod> pr = new ArrayList<>();
     private final List<PoreskaStopa> ps = new ArrayList<>();
     private final List<Proizvodjac> pro = new ArrayList<>();
@@ -65,6 +70,10 @@ public class Controller {
         pr.add(p3);
         pr.add(p4);
         pr.add(p5);
+    }
+
+    public List<Profesor> ucitajListu() {
+        return dbb.ucitajListu();
     }
 
 }
