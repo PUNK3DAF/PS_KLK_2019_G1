@@ -5,14 +5,13 @@
 package controller;
 
 import base.DBBroker;
-import base.Konekcija;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import model.PoreskaStopa;
 import model.Profesor;
 import model.Proizvod;
 import model.Proizvodjac;
+import model.Zvanje;
 
 /**
  *
@@ -74,6 +73,10 @@ public class Controller {
 
     public List<Profesor> ucitajListu() {
         return dbb.ucitajListu();
+    }
+
+    public void izmeniProfesora(int id, String ime, String prezime, Zvanje zvanje) {
+        dbb.izmeniProfesora(id, ime, prezime, zvanje);
     }
 
 }

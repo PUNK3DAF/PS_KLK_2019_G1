@@ -5,6 +5,9 @@
 package view;
 
 import controller.Controller;
+import javax.swing.JOptionPane;
+import model.Profesor;
+import model.Status;
 
 /**
  *
@@ -106,7 +109,18 @@ public class Zadatak2Forma extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOdustaniActionPerformed
 
     private void jButtonIzmeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIzmeniActionPerformed
-
+        int selekRed = jTableProfesori.getSelectedRow();
+        if (selekRed == -1) {
+            JOptionPane.showMessageDialog(this, "MORAS IZABRATI RED", "NIJE IZABRAN RED", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Profesor p = controller.ucitajListu().get(selekRed);
+        if (p.getStatus() == Status.PENZIONISAN) {
+            JOptionPane.showMessageDialog(this, "MORATE IZABRATI AKTIVNOG PROFESORA", "NIJE IZABRAN AKTIVAN PROFA", JOptionPane.ERROR_MESSAGE);
+        } else {
+            ProfesoriForma pf = new ProfesoriForma(this, true, p);
+            pf.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonIzmeniActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,7 +132,7 @@ public class Zadatak2Forma extends javax.swing.JFrame {
     private javax.swing.JTable jTableProfesori;
     // End of variables declaration//GEN-END:variables
 
-    private void popuniTabelu() {
+    public void popuniTabelu() {
         ModelTabeleProfesori mtp = new ModelTabeleProfesori(controller.ucitajListu());
         jTableProfesori.setModel(mtp);
     }
